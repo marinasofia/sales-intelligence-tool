@@ -1,0 +1,19 @@
+# API Keys
+.env
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+.venv/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.DS_Store
+.idea/
+
+# Streamlit
+.streamlit/
