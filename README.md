@@ -78,4 +78,4 @@ This tool uses the OpenAI API, which is a paid service. You'll need your own API
 
 ---
 
-*Currently seeking Summer 2026 internships in Data Analysis, Sales Engineering, and Software Development.*
+*Currently seeking internships in Data Analysis, Sales Engineering, and Software Development.*
