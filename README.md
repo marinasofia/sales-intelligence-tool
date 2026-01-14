@@ -1,81 +1,101 @@
-# Sales Intelligence Tool
+# AI Internship Intelligence Tool
 
-AI-powered web scraping tool that analyzes company websites to identify internship opportunities and generate personalized outreach strategies.
+I got tired of spending 30+ minutes researching each company for internship applications, so I built this tool to automate it.
 
-## 🎯 What It Does
+## What It Does
 
-- Scrapes company websites (up to 5 pages: about, blog, products, careers, etc.)
-- Uses OpenAI GPT-4 to analyze technical gaps and business needs
-- Generates specific "Trojan Horse" project ideas that an intern could build in 48 hours
-- Creates professional PDF reports for outreach
-- Drafts personalized connection messages
+Enter a company URL → Get a specific project idea you could pitch to them in 60 seconds.
 
-## 🛠️ Tech Stack
+The tool:
+- Scrapes their website (homepage + about/blog/product pages)
+- Uses OpenAI to analyze what they do and identify gaps
+- Generates a concrete project proposal
+- Creates a PDF report you can send
+- Drafts an outreach email
 
-- **Python** - Core application logic
-- **Streamlit** - Interactive web interface
-- **BeautifulSoup** - Web scraping and HTML parsing
-- **OpenAI API** - AI-powered content analysis
-- **FPDF** - PDF report generation
+## Why I Built This
 
-## 🚀 Setup
+I was applying to 100+ companies and couldn't personalize each application. This tool reduced my research time from 30 minutes to 6 minutes per company while maintaining quality.
 
-### Prerequisites
-- Python 3.8+
-- OpenAI API key ([get one here](https://platform.openai.com/api-keys))
+**Results:** Analyzed 100+ companies in my first month using it.
 
-### Installation
+## Tech Stack
 
-1. Clone the repository:
+- **Python** - Main application
+- **Streamlit** - Web interface
+- **BeautifulSoup** - Web scraping with retry logic
+- **OpenAI API** - Content analysis
+- **FPDF** - PDF generation
+
+## Screenshots
+
+### Main Interface
+![Main Interface](screenshots/interface.png)
+*Enter any company URL to analyze*
+
+### AI-Generated Analysis
+![Analysis Results](screenshots/results.png)
+*Tool generates specific project proposals in 60 seconds*
+
+### PDF Report
+![PDF Report](screenshots/pdf.png)
+*Professional reports ready to send to hiring managers*
+
+## How to Run It
 ```bash
+# Clone and install
 git clone https://github.com/marinasofia/sales-intelligence-tool.git
 cd sales-intelligence-tool
-```
 
-2. Install dependencies:
-```bash
+# Create virtual environment
+python3 -m venv venv
+source venv/bin/activate
+
+# Install dependencies
 pip install -r requirements.txt
-```
 
-3. Create a `.env` file in the project root:
-```
-OPENAI_API_KEY=your_openai_api_key_here
-```
+# Add your OpenAI key to .env file
+echo "OPENAI_API_KEY=your_key_here" > .env
 
-4. Run the application:
-```bash
+# Run
 streamlit run app.py
 ```
 
-## 💡 Why I Built This
+Then go to `localhost:8501` and enter a company URL.
 
-This project explores:
-- Integration with external APIs (OpenAI)
-- Web scraping best practices with error handling and retry logic
-- Building interactive applications with Streamlit
-- Secure credential management with environment variables
+## Features I'm Proud Of
 
-As someone interested in sales engineering and data analysis, I wanted to understand how AI could automate prospect research and personalized outreach.
+**Smart scraping:** Automatically finds and prioritizes important pages (about, blog, careers). Has retry logic so it doesn't break if a page times out.
 
-## 📖 How to Use
+**Better prompts:** Spent a lot of time making sure the AI doesn't suggest generic stuff. It checks if they already have the feature before suggesting it.
 
-1. Enter a company website URL
-2. Wait 30-60 seconds while the tool analyzes multiple pages
-3. Review the AI-generated project recommendations
-4. Download the PDF report
-5. Use the sidebar to draft a personalized outreach message
+**Actually useful output:** The PDF reports look professional enough to send to hiring managers. The email drafts need editing but give you a solid starting point.
 
-## ⚠️ Note
+## What I Learned
 
-This tool uses the OpenAI API, which is a paid service. You'll need your own API key. New accounts receive $5 in free credits (enough for ~30-40 analyses).
+- **Prompt engineering is harder than it looks.** Getting the AI to suggest *specific* projects instead of generic advice took iteration.
+- **Web scraping needs good error handling.** Sites timeout, return 403s, have weird formatting. Built in retries and fallbacks.
+- **PDF generation has encoding issues.** Had to handle special characters and markdown formatting.
 
-## 👤 Author
+## Limitations
 
-**Marina Sofia Martin**
-- Email: marinasofiaml@gmail.com
-- LinkedIn: [linkedin.com/in/marinasofiaml](https://www.linkedin.com/in/marinasofiaml)
-- GitHub: [github.com/marinasofia](https://github.com/marinasofia)
+- Only works on static sites (no JavaScript rendering yet)
+- Costs ~$0.002 per analysis (OpenAI API)
+- English sites only
+- Takes 30-60 seconds per analysis
 
----
+## Future Ideas
 
-*Currently seeking internships in Data Analysis, Sales Engineering, and Software Development.*
+- Add Selenium for JavaScript-heavy sites
+- Batch mode to analyze multiple companies at once
+- Chrome extension for one-click analysis
+- Cache results so I don't re-scrape the same company
+
+## Contact
+
+**Marina Sofia Martin**  
+marinasofiaml@gmail.com | [LinkedIn](https://linkedin.com/in/marinasofiaml)
+
+CIS @ Baruch College | Microsoft Certified: Fabric Analytics Engineer (DP-600)
+
+Looking for Data Analyst / BI Analyst internships for Summer 2026.
